@@ -68,16 +68,16 @@ print
 print "-- writes_statement_about_hometown() --"
 print
 writes_statement_about_hometown("Westminster", "Mimi", "Nguyen")
-print "Correct: Hi, Mimi Nguyen, we're from the same place!"
+print "Correct if same: Hi, Mimi Nguyen, we're from the same place!"
 print
 writes_statement_about_hometown("London", "Mimi", "Bob")
-print "Correct: Hi Mimi Bob, I'd like to visit Westminster!"
+print "Correct if same: Hi Mimi Bob, I'd like to visit Westminster!"
 print
 writes_statement_about_hometown("London", 123, "Bob")
-print "Correct: Hi 123 Bob, I'd like to visit Westminster!"
+print "Correct if same: Hi 123 Bob, I'd like to visit Westminster!"
 print
 writes_statement_about_hometown()
-print "Correct: Hi, Hermione Granger, we're from the same place!"
+print "Correct if same: Hi, Hermione Granger, we're from the same place!"
 print
 print " -- THIS ENDS 'PART I' TESTS --"
 print
@@ -200,7 +200,7 @@ def calculate_price(base_price, state_abrv, tax=.05):
         # Commonwealth Fund fee of $1 for items with a base price under $100 
         if base_price < 100:
             total = before_fees + 1
-            
+
         # Commonwealth Fund fee of $3 for items $100 or more.
         else:
             total = before_fees + 3
@@ -233,6 +233,69 @@ def calculate_price(base_price, state_abrv, tax=.05):
 
 #        >>> outer("Balloonicorn")
 #        ('Balloonicorn', 'BalloonicornBalloonicornBalloonicorn')
+
+
+def makes_new_list(list, *args):
+    # used info from: https://stackoverflow.com/questions/919680/can-a-variable-number-of-arguments-be-passed-to-a-function
+    # used info from: https://stackoverflow.com/questions/3394835/args-and-kwargs
+    """takes all arguments and combines into single list"""
+
+    for item in args:
+        list.append(item)
+
+    return list
+
+print "-- BEGINS TESTS FOR makes_new_list() --"
+print 
+print ('makes_new_list([1, 2, 3], 4, 5, 6) == [1, 2, 3, 4, 5, 6]: ' + str(makes_new_list([1, 2, 3], 4, 5, 6) == [1, 2, 3, 4, 5, 6]))
+print ('makes_new_list(["cat", "dog", "moose"], "bear", "aardvark") == ["cat", "dog", "moose", "bear", "aardvark"]: ' + str(makes_new_list(["cat", "dog", "moose"], "bear", "aardvark") == ["cat", "dog", "moose", "bear", "aardvark"]))
+print ('makes_new_list([1, 2, 3], "laptop", " ", 6) == [1, 2, 3, "laptop", " ", 6]: ' + str(makes_new_list([1, 2, 3], "laptop", " ", 6) == [1, 2, 3, "laptop", " ", 6]))
+
+# this test gives a syntax error... will figure out another day
+# print ('makes_new_list([1, 2, 3], [4, 5, 6], 7, 8) == [1, 2, 3, [4, 5, 6], 7, 8]: ' + str(makes_new_list([1, 2, 3], [4, 5, 6], 7, 8) == ([1, 2, 3, [4, 5, 6], 7, 8]))
+print
+print "Different kind of test for same function"
+print "Test Output:" + str(makes_new_list([1, 2, 3], [4, 5, 6], 7, 8))
+print "Correct if same: [1, 2, 3, [4, 5, 6], 7, 8]"
+
+# this test gives a syntax error... will figure out another day
+# print "Output:" + str(makes_new_list([1, [2] 3], [4, 5, 6], 7, 8))
+# print "Correct: [1, [2], 3, [4, 5, 6], 7, 8]"
+print
+print "-- THIS ENDS TESTS FOR makes_new_list() --"
+print
+print
+
+
+def creates_tuple_of_word_tripled(word):
+    # used info from: https://realpython.com/blog/python/inner-functions-what-are-they-good-for/
+    """ prints tuple of original word and tripled original word """
+    
+    my_tuple = ()
+
+    # inner function
+    def multiplies_word_by_three(word):
+        return word*3
+
+    # calling inner function
+    my_tuple = (word, multiplies_word_by_three(word))
+
+    print my_tuple
+
+print "-- BEGINS TESTS FOR creates_tuple_of_word_tripled() --"
+print 
+creates_tuple_of_word_tripled("Baby")
+print "Correct if same: ('Baby', 'BabyBabyBaby')"
+print
+creates_tuple_of_word_tripled("Hermione Granger")
+print "Correct if same: ('Hermione Granger', 'Hermione GrangerHermione GrangerHermione Granger')"
+print
+creates_tuple_of_word_tripled("1one1one")
+print "Correct if same: ('1one1one', '1one1one1one1one1one1one')"
+print
+print "-- THIS ENDS TESTS FOR creates_tuple_of_word_tripled() --"
+print
+print
 
 
 ###############################################################################
