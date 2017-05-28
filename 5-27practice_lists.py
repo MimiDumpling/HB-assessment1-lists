@@ -93,13 +93,15 @@ def smallest_int(numbers):
         >>> smallest_int([]) is None
         True
     """
-    smallest = numbers[0]
 
-    for num in numbers:
-        if numbers == []:
+    if numbers == []:
             return None
-        elif num < numbers[0]:
-            smallest = num
+    else:
+        smallest = numbers[0]
+
+        for num in numbers:
+            if num < numbers[0]:
+                smallest = num
 
     return smallest
 
@@ -122,13 +124,14 @@ def largest_int(numbers):
         >>> largest_int([]) is None
         True
     """
-    largest = numbers[0]
-
-    for num in numbers:
-        if numbers == []:
+    if numbers == []:
             return None
-        elif num > numbers[0]:
-            largest = num
+    else:
+        largest = numbers[0]
+        
+        for num in numbers:
+            if num > numbers[0]:
+                largest = num
 
     return largest
 
@@ -190,8 +193,15 @@ def sum_numbers(numbers):
         >>> sum_numbers([])
         0
     """
+    if numbers == []:
+        return 0
+    else:
+        summation = 0
 
-    return None
+        for num in numbers:
+            summation += num
+
+    return summation
 
 
 def mult_numbers(numbers):
@@ -213,8 +223,17 @@ def mult_numbers(numbers):
         >>> mult_numbers([])
         1
     """
+    if numbers == []:
+        return 1
+    
+    for num in numbers:
+        if num == 0:
+            return 0
+        else:
+            multiplied = numbers[0]
+            multiplied *= multiplied
 
-    return None
+    return multiplied        
 
 
 def join_strings(words):
@@ -233,8 +252,14 @@ def join_strings(words):
         >>> join_strings([])
         ''
     """
+    if words == []:
+        return ""
 
-    return "Not the right thing"
+    for word in words:
+        joined = words[0]
+        joined += word
+
+    return joined
 
 
 def average(numbers):
@@ -256,8 +281,19 @@ def average(numbers):
     (Think of the best way to handle an empty input list, though,
     a feel free to provide a good solution here.)
     """
+    if numbers == []:
+        return "empty list"
 
-    return 0
+    summation = 0
+
+    for num in numbers:
+        floated_num = float(num)
+        summation += floated_num 
+
+    length = len(numbers)    
+    avg = summation/length
+
+    return avg
 
 
 def join_strings_with_comma(words):
@@ -277,8 +313,17 @@ def join_strings_with_comma(words):
         'Pretzel'
     """
 
-    return ""
+    if len(words) == 1:
+        return words[0]
 
+    last_word = words[-1]
+    words = words[:-1]
+    whole_string = ""
+
+    for word in words:
+        whole_string += word + ", "
+
+    return whole_string + last_word
 
 def reverse_list(items):
     """Return the input list, reversed.
@@ -303,8 +348,7 @@ def reverse_list(items):
         ['apple', 'berry', 'cherry']
     """
 
-    return []
-
+    return items[::-1]
 
 def reverse_list_in_place(items):
     """Reverse the input list `in place`.
@@ -328,8 +372,15 @@ def reverse_list_in_place(items):
         >>> orig
         ['I', 'love', 'cookies']
     """
+    
+    #length = len(items)
 
-    return []
+    #for thing in range(0, length):
+        #
+        
+
+
+    return items
 
 
 def duplicates(items):
