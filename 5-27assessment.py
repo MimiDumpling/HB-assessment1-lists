@@ -20,7 +20,7 @@ def all_odd(numbers):
 
     for num in numbers:
         if num % 2 != 0:
-            odds += num
+            odds += [num]
 
     return odds
 
@@ -129,7 +129,9 @@ def every_other_item(items):
        ['you', 'are', 'good', 'at', 'code']
     """
 
-    return ['the wrong thing']
+    every_other = items[::2]
+
+    return every_other
 
 
 def largest_n_items(items, n):
@@ -153,8 +155,15 @@ def largest_n_items(items, n):
         >>> largest_n_items([3, 3, 3, 2, 1], 2)
         [3, 3]
     """
+    if n == 0:
+        return []
 
-    return []
+    items.sort()
+
+    largest = items[-n:]
+    
+
+    return largest
 
 
 #####################################################################
