@@ -51,6 +51,7 @@ def print_indices(items):
     
     """
 
+    # starts index at zero without using "count = 0" 
     index = (len(items) - 1) - (len(items) - 1)
     new_list = []
 
@@ -105,11 +106,12 @@ def foods_in_common(foods1, foods2):
     if common_foods == []:
         return []
 
-    unique_foods = set(common_foods)
-    list_of_food = list(unique_foods)
-    list_of_food.sort()
+    # first: set() takes only unique items, but turns info into a set
+    # second: list() turns info back into a list        
+    unique_foods = list(set(common_foods))
+    unique_foods.sort()
 
-    return list_of_food
+    return unique_foods
 
 
 def every_other_item(items):
@@ -160,6 +162,7 @@ def largest_n_items(items, n):
 
     items.sort()
 
+    # largest item will be the last in a sorted list
     largest = items[-n:]
     
 

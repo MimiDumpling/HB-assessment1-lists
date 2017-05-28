@@ -30,34 +30,58 @@ def determines_if_hometown(string="Westminster"):
 
     if string == "Westminster":
         return True
+
     return False
 
 
 def writes_full_name(first="Albus", last="Dumbledore"):
-    """creates a single string comprised of a first and last name"""
+    """returns a single string comprised of a first and last name"""
 
     return "{} {}".format(first, last)
     
 
-def writes_if_same_hometown(hometown="Westminster", first="Hermione", last="Granger"):
+def writes_statement_about_hometown(hometown="Westminster", first="Hermione", last="Granger"):
+    """prints statement revealing whether or not user is from the same hometown"""
+
     if determines_if_hometown(hometown) == True:
         print "Hi, {}, we're from the same place!".format(writes_full_name(first, last))
     else:
         print "Hi {}, I'd like to visit {}!".format(writes_full_name(first, last), "Westminster")
 
-print "FUNCTION TESTS BELOW"
+print "-- 'PART I' TESTS BEGIN BELOW --"
 print
-print determines_if_hometown("W")
-print determines_if_hometown(123)
-print determines_if_hometown()
-print determines_if_hometown("Westminster")
-print writes_full_name("Mimi", "Nguyen")
-print writes_full_name(123, "George")
-print writes_full_name()
-writes_if_same_hometown("Westminster", "Mimi", "Nguyen")
-writes_if_same_hometown("London", "Mimi", "Bob")
-writes_if_same_hometown("London", 123, "Bob")
-writes_if_same_hometown()
+print "-- determines_if_hometown() --"
+print
+print ('determines_if_hometown("W") == False: ' + str(determines_if_hometown("W") == False))
+print ('determines_if_hometown(123) == False: ' + str(determines_if_hometown(123) == False))
+print ('determines_if_hometown() == True: ' + str(determines_if_hometown() == True))
+print ('determines_if_hometown("Westminster") == True: ' + str(determines_if_hometown("Westminster") == True))
+print
+print    
+print "-- writes_full_name() --"
+print
+print ('writes_full_name("Mimi", "Nguyen") == Mimi Nguyen: ' + str(writes_full_name("Mimi", "Nguyen") == "Mimi Nguyen"))
+print ('writes_full_name(123, "George") == 123 George: ' + str(writes_full_name(123, "George") == "123 George"))
+print ('writes_full_name() == Albus Dumbledore: ' + str(writes_full_name() == "Albus Dumbledore"))
+print
+print
+print "-- writes_statement_about_hometown() --"
+print
+writes_statement_about_hometown("Westminster", "Mimi", "Nguyen")
+print "Correct: Hi, Mimi Nguyen, we're from the same place!"
+print
+writes_statement_about_hometown("London", "Mimi", "Bob")
+print "Correct: Hi Mimi Bob, I'd like to visit Westminster!"
+print
+writes_statement_about_hometown("London", 123, "Bob")
+print "Correct: Hi 123 Bob, I'd like to visit Westminster!"
+print
+writes_statement_about_hometown()
+print "Correct: Hi, Hermione Granger, we're from the same place!"
+print
+print " -- THIS ENDS 'PART I' TESTS --"
+print
+print
 
 ###############################################################################
 
@@ -176,6 +200,7 @@ def calculate_price(base_price, state_abrv, tax=.05):
         # Commonwealth Fund fee of $1 for items with a base price under $100 
         if base_price < 100:
             total = before_fees + 1
+            
         # Commonwealth Fund fee of $3 for items $100 or more.
         else:
             total = before_fees + 3
