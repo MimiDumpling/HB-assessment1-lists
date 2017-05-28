@@ -62,6 +62,7 @@ def print_indices(items):
         
         index += 1
 
+    # is there also a way to do this with enumerate()? research more another day...
 
 def foods_in_common(foods1, foods2):
     """Find foods in common.
